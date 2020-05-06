@@ -65,8 +65,25 @@ local couds = {
 		cl_playerspraydisable = { 1, GetConVarNumber },
 		r_spray_lifetime = { 1, GetConVarNumber },
 		cl_lagcompensation = { 1, GetConVarNumber },
-		lfs_volume = { 0, GetConVarNumber }
+		lfs_volume = { 0, GetConVarNumber },
+
+
+		mat_antialias = { 0, GetConVarNumber },
+		cl_detaildist = { 0, GetConVarNumber },
+		cl_drawmonitors = { 0, GetConVarNumber },
+		mat_envmapsize = { 0, GetConVarNumber },
+		mat_envmaptgasize = { 0, GetConVarNumber },
+		mat_hdr_level = { 0, GetConVarNumber },
+		mat_max_worldmesh_vertices = { 512, GetConVarNumber2}, )
+		mat_motion_blur_enabled = { 0, GetConVarNumber },
+		mat_parallaxmap = { 0, GetConVarNumber },
+		mat_picmip = { 2, GetConVarNumber },
+		mat_reduceparticles = { 1, GetConVarNumber },
+		mp_decals = { 1, GetConVarNumber },
+		r_waterdrawreflection = { 0, GetConVarNumber },
+		m9kgaseffect = { 0, GetConVarNumber }
 	}
+
 	local detours = {}
 	for k,v in pairs( cmdlist ) do
 		detours[k] = v[2](k)
