@@ -81,7 +81,13 @@ local couds = {
 		mat_reduceparticles = { 1, GetConVarNumber },
 		mp_decals = { 1, GetConVarNumber },
 		r_waterdrawreflection = { 0, GetConVarNumber },
-		m9kgaseffect = { 0, GetConVarNumber }
+		m9kgaseffect = { 0, GetConVarNumber },
+
+		-- remove blood
+		violence_ablood = { 0, GetConVarNumber },
+		violence_hblood = { 0, GetConVarNumber },
+		violence_agibs = { 0, GetConVarNumber },
+		violence_hgibs = { 0, GetConVarNumber }
 	}
 
 	local detours = {}
