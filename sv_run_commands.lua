@@ -35,11 +35,7 @@ local couds = {
 		r_drawdetailprops = { 0, GetConVarNumber },
 		r_shadowrendertotexture = { 0, GetConVarNumber }, 
 		r_shadowmaxrendered = { 0, GetConVarNumber }, 
-		r_threaded_client_shadow_manager = { 1, GetConVarNumber }, 
-		r_threaded_particles = { 1, GetConVarNumber }, 
 		r_drawmodeldecals = { 0, GetConVarNumber }, 
-		r_threaded_renderables = { 1, GetConVarNumber }, 
-		r_queued_ropes = { 1, GetConVarNumber }, 
 		cl_phys_props_enable = { 0, GetConVarNumber }, 
 		cl_phys_props_max = { 0, GetConVarNumber }, 
 		cl_threaded_bone_setup = { 1, GetConVarNumber }, 
@@ -48,10 +44,7 @@ local couds = {
 		r_propsmaxdist = { 0, GetConVarNumber }, 
 		violence_agibs = { 0, GetConVarNumber }, 
 		violence_hgibs = { 0, GetConVarNumber }, 
-		mat_queue_mode = { 2, GetConVarNumber }, 
 		mat_shadowstate = { 0, GetConVarNumber }, 
-		studio_queue_mode = { 1, GetConVarNumber },
-		gmod_mcore_test = { 1, GetConVarNumber },
 		cl_show_splashes = { 0, GetConVarNumber },
 		cl_ejectbrass = { 0, GetConVarNumber },
 		cl_detailfade = { 800, GetConVarNumber },
@@ -87,7 +80,22 @@ local couds = {
 		violence_ablood = { 0, GetConVarNumber },
 		violence_hblood = { 0, GetConVarNumber },
 		violence_agibs = { 0, GetConVarNumber },
-		violence_hgibs = { 0, GetConVarNumber }
+		violence_hgibs = { 0, GetConVarNumber },
+
+		r_threaded_client_shadow_manager = { 1, GetConVarNumber },
+		r_threaded_particles = { 1, GetConVarNumber },
+		r_threaded_renderables = { 1, GetConVarNumber },
+		r_queued_decals = { 1, GetConVarNumber },
+		r_queued_ropes = { 1, GetConVarNumber }, 
+		r_queued_post_processing = { 1, GetConVarNumber },
+		threadpool_affinity = { 4, GetConVarNumber },
+
+		mem_max_heapsize = { 2048, GetConVarNumber },
+		mat_queue_mode = { 0, GetConVarNumber },
+		host_thread_mode = { 1, GetConVarNumber },
+
+		studio_queue_mode = { 1, GetConVarNumber },
+		gmod_mcore_test = { 1, GetConVarNumber },
 	}
 
 	local detours = {}
