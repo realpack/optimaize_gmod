@@ -3,7 +3,7 @@
   - Disables Pixel Shaders 2.0/1.4 and Vertex Shaders 2.0
   - Sets the maximum available DirectX version.
 
-- `cl_limit_view.lua` Tries to limit the player's field of vision. I wouldn't use this if I were you, but it's there
+- [`Simple-Render-Distance`](https://github.com/scuroinside/Simple-Render-Distance) Addon that allows you to change render distance of certain categories of entities on your server
 
 - `sh_disable_widgets.lua` Disables unnecessary widget hooks that no one ever uses.
 
