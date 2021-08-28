@@ -7,11 +7,11 @@ if SERVER then
 		timer.Remove("CheckHookTimes")
 	end
 
-	timer.Destroy("HostnameThink")
+	timer.Remove("HostnameThink")
 end
 
-hook.Add( "PreGamemodeLoaded", "DisableWidgets", function()
+hook.Add("PreGamemodeLoaded", "DisableWidgets", function()
 	widgets.PlayerTick = function() end
-	hook.Remove('PlayerTick', 'TickWidgets')
-	hook.Remove( "PostDrawEffects", "RenderWidgets" )
+	hook.Remove("PlayerTick", "TickWidgets")
+	hook.Remove("PostDrawEffects", "RenderWidgets")
 end)
