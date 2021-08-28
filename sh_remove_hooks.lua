@@ -25,3 +25,7 @@ hook.Add("Initialize", "RemoveOtherHooks", function()
 		hook.Remove("PostDrawEffects", "RenderWidgets")
 	end
 end)
+
+function GAMEMODE:FindUseEntity( _, ent )
+	return ent
+end
