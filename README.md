@@ -26,6 +26,8 @@
 - `sv_run_commands.lua` Runs a bunch of commands to optimize the client and its graphics. Some idiot wrote this, but it seems to work.
 
 - `sv_seatsoptimaize.lua` Makes corrections to the seat network?
+
+- `cl_fontcache.lua` Caches fonts and prevents them from being overwritten without changes.
 ___ 
 
 Here are just some observations that might help you.
