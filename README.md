@@ -15,7 +15,7 @@
 
 - `sh_remove_hooks.lua` Deletes hooks that. Also check if you need to.
 
-- `sh_remove_ragdolls.lua`
+- `cl_remove_ragdolls.lua`
   - Starts a timer to delete all ragdolls and objects on the client side.
   - Disables the unnecessary depth display hook after death.
 
