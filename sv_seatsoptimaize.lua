@@ -13,7 +13,7 @@ local table_insert = table.insert
 module( "seats_network_optimizer" )
 
 hook.Add( "OnEntityCreated", "seats_network_optimizer", function( seat )
-	if seat:GetClass()=="prop_vehicle_prisoner_pod" then
+	if seat:GetClass() == "prop_vehicle_prisoner_pod" then
 		seat:AddEFlags( EFL_NO_THINK_FUNCTION ) -- disable seat's Think
 		seat.seats_network_optimizer = true -- Now we know that this seat has been processed by this addon.
 	end
@@ -36,14 +36,16 @@ hook.Add( "Think", "seats_network_optimizer", function()
 			end
 		end
 	end
+
 	-- Find a valid seat:
 	while seats[i] and not IsValid( seats[i] ) do
 		-- Jump to the next valid seat.
-		i = i+1
+		i = i + 1
 	end
+
 	local seat = seats[i]
 	-- Disable the previously processed seat's Think if ready:
-	if last_enabled~=seat and IsValid( last_enabled ) then -- ignore a seat's Think that is gonna be re-enabled
+	if last_enabled ~= seat and IsValid( last_enabled ) then -- ignore a seat's Think that is gonna be re-enabled
 		-- last_enabled's Think is kept enabled until m_bEnterAnimOn and m_bExitAnimOn are reset.
 		local saved = last_enabled:GetSaveTable()
 		if not saved["m_bEnterAnimOn"] and not saved["m_bExitAnimOn"] then
@@ -57,7 +59,8 @@ hook.Add( "Think", "seats_network_optimizer", function()
 		seat:RemoveEFlags( EFL_NO_THINK_FUNCTION )
 		last_enabled = seat
 	end
-	i = i+1
+
+	i = i + 1
 end )
 
 local function EnteredOrLeaved( ply, seat )
@@ -65,5 +68,6 @@ local function EnteredOrLeaved( ply, seat )
 		table_insert( seats, i, seat ) -- seat's Think will be enabled on next game's Think
 	end
 end
+
 hook.Add( "PlayerEnteredVehicle", "seats_network_optimizer", EnteredOrLeaved )
 hook.Add( "PlayerLeaveVehicle", "seats_network_optimizer", EnteredOrLeaved )

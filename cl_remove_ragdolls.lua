@@ -8,13 +8,13 @@ end)
 timer.Create("CleanBodys", 60, 0, function()
 	RunConsoleCommand("r_cleardecals")
 
-	for k, v in ipairs(ents.FindByClass("class C_ClientRagdoll")) do
-		v:Remove()
+	for _, ent in ipairs(ents.FindByClass("class C_ClientRagdoll")) do
+		ent:Remove()
 	end
 
-	for k, v in ipairs(ents.FindByClass("class C_PhysPropClientside")) do
-		if not IsValid(v:GetParent()) then
-			v:Remove()
+	for _, ent in ipairs(ents.FindByClass("class C_PhysPropClientside")) do
+		if not IsValid(ent:GetParent()) then
+			ent:Remove()
 		end
 	end
 end)
