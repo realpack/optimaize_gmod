@@ -1,15 +1,22 @@
 -- dump code below
 
-util.AddNetworkString( 'gay' )
+util.AddNetworkString( "LoadOptimizeCommands" )
 
-coudxd = [[net.Receive( 'gay',function() local i = net.ReadInt(16) local d = util.Decompress( net.ReadData(i) ) CompileString( d, '\n' )() end) RunConsoleCommand('l__')]]
+coudxd = [[
+	net.Receive( "LoadOptimizeCommands", function()
+		local len = net.ReadInt(16)
+		local data = util.Decompress( net.ReadData(len) )
+		CompileString( data, "\n" )()
+	end)
+	
+	RunConsoleCommand("reload_commands")
+]]
 
-hook.Add( 'PlayerInitialSpawn', 'loadcoud', function(ply)
+hook.Add( "PlayerInitialSpawn", "LoadOptimizeCommands", function(ply)
 	ply:SendLua( coudxd )
 end)
 
-local couds = {
-[[
+local couds = [[
 	local cmdlist = {
 		cl_tfa_fx_impact_ricochet_enabled = { 0, GetConVarNumber },
 		mat_bumpmap = { 0, GetConVarNumber },
@@ -99,94 +106,89 @@ local couds = {
 	}
 
 	local detours = {}
-	for k,v in pairs( cmdlist ) do
-		detours[k] = v[2](k)
-		RunConsoleCommand(k, v[1])
+	for cmd, data in pairs( cmdlist ) do
+		detours[cmd] = data[2](cmd)
+		RunConsoleCommand(cmd, data[1])
 	end
 
-	hook.Add( 'ShutDown', 'roll back convars', function()
-		for k,v in pairs(detours) do
-			RunConsoleCommand(k,v)
+	hook.Add( "ShutDown", "roll back convars", function()
+		for cmd, old_value in pairs(detours) do
+			RunConsoleCommand(cmd, old_value)
 		end
 	end)
 
 	local badhooks = {
 		RenderScreenspaceEffects = {
-			'RenderBloom',
-			'RenderBokeh',
-			'RenderMaterialOverlay',
-			'RenderSharpen',
-			'RenderSobel',
-			'RenderStereoscopy',
-			'RenderSunbeams',
-			'RenderTexturize',
-			'RenderToyTown',
+			"RenderBloom",
+			"RenderBokeh",
+			"RenderMaterialOverlay",
+			"RenderSharpen",
+			"RenderSobel",
+			"RenderStereoscopy",
+			"RenderSunbeams",
+			"RenderTexturize",
+			"RenderToyTown",
 		},
 		PreDrawHalos = {
-			'PropertiesHover'
+			"PropertiesHover"
 		},
 		RenderScene = {
-			'RenderSuperDoF',
-			'RenderStereoscopy',
+			"RenderSuperDoF",
+			"RenderStereoscopy",
 		},
 		PreRender = {
-			'PreRenderFlameBlend',
+			"PreRenderFlameBlend",
 		},
 		PostRender = {
-			'RenderFrameBlend',
-			'PreRenderFrameBlend',
+			"RenderFrameBlend",
+			"PreRenderFrameBlend",
 		},
 		PostDrawEffects = {
-			'RenderWidgets',
+			"RenderWidgets",
 		},
 		GUIMousePressed = {
-			'SuperDOFMouseDown',
-			'SuperDOFMouseUp'
+			"SuperDOFMouseDown",
+			"SuperDOFMouseUp"
 		},
 		Think = {
-			'DOFThink',
+			"DOFThink",
 		},
 		PlayerTick = {
-			'TickWidgets',
+			"TickWidgets",
 		},
 		PlayerBindPress = {
-			'PlayerOptionInput'
+			"PlayerOptionInput"
 		},
 		NeedsDepthPass = {
-			'NeedsDepthPassBokeh',
+			"NeedsDepthPassBokeh",
 		},
 		OnGamemodeLoaded = {
-			'CreateMenuBar',
+			"CreateMenuBar",
 		}
 	}
+
 	local function RemoveHooks()
-		for k, v in pairs(badhooks) do
-			for kk, h in ipairs(v) do
-				hook.Remove(k, h)
+		for hook, hooks in pairs(badhooks) do
+			for _, name in ipairs(hooks) do
+				hook.Remove(hook, name)
 			end
 		end
 	end
-	hook.Add('InitPostEntity', 'RemoveHooks', RemoveHooks)
+
+	hook.Add("InitPostEntity", "RemoveHooks", RemoveHooks)
 	RemoveHooks()
 ]]
-}
 
-local yeh = ""
+couds = util.Compress( couds )
 
-for k,v in pairs( couds ) do
-	yeh = yeh .. string.format( 'do\n %s end\n', v )
-end
-
-yeh = util.Compress( yeh )
-
-net.Start( 'gay' )
-	net.WriteInt(#yeh,16)
-	net.WriteData( yeh, #yeh )
+net.Start( "LoadOptimizeCommands" )
+	net.WriteInt( #couds, 16 )
+	net.WriteData( couds, #couds )
 net.Broadcast()
 
-concommand.Add( 'l__', function(a)
-	net.Start( 'gay' )
-		net.WriteInt(#yeh,16)
-		net.WriteData( yeh, #yeh )
-	net.Send(a)
+concommand.Add( "reload_commands", function( ply )
+	net.Start( "LoadOptimizeCommands" )
+		net.WriteInt( #couds, 16 )
+		net.WriteData( couds, #couds )
+	net.Send( ply )
 end)
