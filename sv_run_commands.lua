@@ -1,5 +1,3 @@
--- dump code below
-
 util.AddNetworkString( "LoadOptimizeCommands" )
 
 coudxd = [[
@@ -16,11 +14,12 @@ hook.Add( "PlayerInitialSpawn", "LoadOptimizeCommands", function(ply)
 	ply:SendLua( coudxd )
 end)
 
+local interp = 0.01364 -- Interpolate object positions starting this many seconds in past
+
 local couds = [[
 	local cmdlist = {
 		cl_tfa_fx_impact_ricochet_enabled = { 0, GetConVarNumber },
 		mat_bumpmap = { 0, GetConVarNumber },
-		serverguard_songplayer_volume = { 45, GetConVarNumber },
 		rate = { 100000, GetConVarNumber },
 		cl_tfa_fx_impact_ricochet_sparks = { 0, GetConVarNumber },
 		cl_tfa_fx_impact_ricochet_sparklife = { 0, GetConVarNumber },
@@ -29,7 +28,9 @@ local couds = [[
 		cl_tfa_fx_impact_enabled = { 0, GetConVarNumber },
 		cl_updaterate = { 30, GetConVarNumber },
 		cl_cmdrate = { 30, GetConVarNumber },
-		cl_interp = { 5, GetConVarNumber },
+		cl_interp = { ]] .. interp .. [[, GetConVarNumber },
+		cl_interpolate = { 0, GetConVarNumber },
+		cl_interp_ratio = { 0, GetConVarNumber },
 		cl_tfa_legacy_shells = { 1, GetConVarNumber },
 		sgm_ignore_warnings = { 1, GetConVarNumber },
 		r_shadows = { 1, GetConVarNumber }, 
