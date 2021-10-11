@@ -4,3 +4,6 @@
 [submodule "BadCoderz"]
 	path = BadCoderz
 	url = https://github.com/ExtReMLapin/BadCoderz
+[submodule "Hook-Library"]
+	path = Hook-Library
+	url = https://github.com/Srlion/Hook-Library
