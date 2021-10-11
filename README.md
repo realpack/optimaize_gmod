@@ -3,6 +3,8 @@
   - Disables Pixel Shaders 2.0/1.4 and Vertex Shaders 2.0
   - Sets the maximum available DirectX version.
 
+- [`BadCoderz`](https://github.com/ExtReMLapin/BadCoderz) "Find unoptimized gmod addons and KILL the devs who made them"
+
 - [`Simple-Render-Distance`](https://github.com/scuroinside/Simple-Render-Distance) Addon that allows you to change render distance of certain categories of entities on your server
 
 - `sh_disable_widgets.lua` Disables unnecessary widget hooks that no one ever uses.

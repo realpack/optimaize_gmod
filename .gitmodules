@@ -1,3 +1,6 @@
 [submodule "Simple-Render-Distance"]
 	path = Simple-Render-Distance
 	url = https://github.com/scuroinside/Simple-Render-Distance.git
+[submodule "BadCoderz"]
+	path = BadCoderz
+	url = https://github.com/ExtReMLapin/BadCoderz
