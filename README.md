@@ -42,8 +42,22 @@ Here are just some observations that might help you.
 
 - In ./srcds_run - find the lines `ulimit -c 2000` and replace it with `ulimit -c unlimited`. This will allow us to use more resources and remove some segmentation errors.
 
- - You can play with the values in `server.cfg`:
+- You can play with the values in `server.cfg`:
   ```cfg
     mem_max_heapsize "2048"
     threadpool_affinity "4" // 8 for octa-core, 6 for hexa-core, 4 for quad-core, 2 for double-core
   ```
+  
+ - Startup parameters:
+
+    `-high` High process priority
+
+    `-novid` Disables video decoding function - disables codec, not splash screen, does not affect video work directly in the game, - the effect on fps is negligible
+
+    `-malloc=system` Allows you to choose the size of memory blocks = loads the RAM, offloads the CPU
+
+    `-swapcores` allows you to change threads for materials
+
+    `-softparticlesdefaultoff` Disables particle depth filter - gives fps boost, reduces quality of particles
+
+    `-gl` or `-r_emulate_gl` Simulates OpenGL on Windows - high fps boost, does not work for everyone
