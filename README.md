@@ -36,6 +36,8 @@
 - `cl_blink_gc.lua` "This addon will check your client's current LUA memory and if too much memory is being used, will manually call for a collection of unused memory." [BlinkGC](https://www.gmodstore.com/community/threads/5532/page/1#post-38589)
   - Reduces the amount of crashes you have due to bloated addons.
   - Gives information in your console about your Active LUA Memory.
+
+- `sh_simple_gc.lua` Regularly adjusts garbage collector behavior to reduce performance overhead.
 ___ 
 
 Here are just some observations that might help you.
