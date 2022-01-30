@@ -37,7 +37,7 @@
   - Reduces the amount of crashes you have due to bloated addons.
   - Gives information in your console about your Active LUA Memory.
 
-- `sh_simple_gc.lua` Regularly adjusts garbage collector behavior to reduce performance overhead.
+- `simplegc/sh_simplegc.lua` Regularly adjusts garbage collector behavior to reduce performance overhead. [scuroinside/snippets](https://github.com/scuroinside/snippets/blob/main/simplegc.lua)
 ___ 
 
 Here are just some observations that might help you.
