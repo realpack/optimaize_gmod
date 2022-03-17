@@ -7,3 +7,6 @@
 [submodule "Hook-Library"]
 	path = Hook-Library
 	url = https://github.com/Srlion/Hook-Library
+[submodule "gmod-lua-performance"]
+	path = gmod-lua-performance
+	url = https://github.com/OverlordAkise/gmod-lua-performance

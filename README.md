@@ -9,6 +9,9 @@
 
 - [`Simple-Render-Distance`](https://github.com/scuroinside/Simple-Render-Distance) Addon that allows you to change render distance of certain categories of entities on your server
 
+- [`gmod-lua-performance`](https://github.com/OverlordAkise/gmod-lua-performance) A simple comparison of performance optimizations for gLUA
+  - These are a few benchmarks that are tested on a Garry's Mod Server idling with DarkRP with only 1 player online. Some of those benchmarks, if possible, were also tested in a LUA5.3 console on Debian 10. If not otherwise stated differently all tests have been done on a gmod server on linux.
+
 - `sh_disable_widgets.lua` Disables unnecessary widget hooks that no one ever uses.
 
 - `sh_limit_phys.lua` Changes the physics of objects, both for the server and for the client.
