@@ -1,9 +1,6 @@
 RunConsoleCommand("r_decals", 10)
 RunConsoleCommand("mp_decals", 10)
-
-hook.Add("NeedsDepthPass", "RemoveRenderDepth", function()
-	return false
-end)
+hook.Add("NeedsDepthPass", "RemoveRenderDepth", function() return false end)
 
 timer.Create("CleanBodys", 60, 0, function()
 	RunConsoleCommand("r_cleardecals")

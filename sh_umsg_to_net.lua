@@ -1,49 +1,50 @@
 -- https://github.com/SuperiorServers/dash/blob/master/lua/dash/libraries/usermessage.lua
-
-if (SERVER) then
-	local message 	= {}
-	local pooled 	= {}
-
-	util.AddNetworkString 'umsg.SendLua'
-	util.AddNetworkString 'umsg.UnPooled'
+if SERVER then
+	local message = {}
+	local pooled = {}
+	util.AddNetworkString'umsg.SendLua'
+	util.AddNetworkString'umsg.UnPooled'
 
 	function SendUserMessage(name, recipients, ...)
 		umsg.Start(name, recipients)
+
 		for k, v in pairs({...}) do
 			local t = type(v)
-			if (t == 'string') then
+
+			if t == 'string' then
 				umsg.String(v)
 			elseif IsEntity(v) then
 				umsg.Entity(v)
-			elseif (t == 'number') then
+			elseif t == 'number' then
 				umsg.Long(v)
-			elseif (t == 'Vector') then
+			elseif t == 'Vector' then
 				umsg.Vector(v)
-			elseif (t == 'Angle') then
+			elseif t == 'Angle' then
 				umsg.Angle(v)
-			elseif (t == 'boolean') then
+			elseif t == 'boolean' then
 				umsg.Bool(v)
 			else
 				ErrorNoHalt('SendUserMessage: Couldn\'t send type ' .. t .. '\n')
 			end
 		end
+
 		umsg.End()
 	end
 
 	function BroadcastLua(lua)
-		net.Start 'umsg.SendLua'
-			net.WriteString(lua)
+		net.Start('umsg.SendLua')
+		net.WriteString(lua)
 		net.Broadcast()
 	end
 
 	debug.getregistry().Player.SendLua = function(self, lua)
-		net.Start 'umsg.SendLua'
-			net.WriteString(lua)
+		net.Start('umsg.SendLua')
+		net.WriteString(lua)
 		net.Send(self)
-	end	
+	end
 
 	function umsg.PoolString(name)
-		if (not pooled[name]) then
+		if not pooled[name] then
 			util.AddNetworkString('umsg.' .. name)
 			pooled[name] = true
 		end
@@ -52,7 +53,7 @@ if (SERVER) then
 	function umsg.Start(name, recipients)
 		local t = type(recipients)
 
-		if (t == 'CRecipientFilter') then
+		if t == 'CRecipientFilter' then
 			message = recipients:GetPlayers()
 		elseif (t == 'Player') or (t == 'table') then
 			message = recipients
@@ -64,7 +65,7 @@ if (SERVER) then
 			net.Start('umsg.' .. name)
 		else
 			umsg.PoolString(name)
-			net.Start 'umsg.UnPooled'
+			net.Start('umsg.UnPooled')
 			net.WriteString(name)
 		end
 	end
@@ -82,7 +83,7 @@ if (SERVER) then
 	end
 
 	function umsg.Char(value)
-		net.WriteInt((isstring(value) and string.char(value) or value), 8)
+		net.WriteInt(isstring(value) and string.char(value) or value, 8)
 	end
 
 	function umsg.Entity(value)
@@ -125,16 +126,19 @@ else
 	end)
 
 	function usermessage.Hook(name, callback, ...)
-		if (SERVER) then
+		if SERVER then
 			umsg.PoolString(name)
+
 			return
 		end
 
 		hooks[name] = {}
+
 		hooks[name].Function = function()
 			callback(usermessage, unpack(hooks[name].PreArgs))
 		end
-		hooks[name].PreArgs	= {...}
+
+		hooks[name].PreArgs = {...}
 
 		net.Receive('umsg.' .. name, function(len)
 			usermessage.IncomingMessage(name)
@@ -192,6 +196,7 @@ else
 	function usermessage:ReadVectorNormal()
 		local v = net.ReadVector()
 		v:Normalize()
+
 		return v
 	end
 

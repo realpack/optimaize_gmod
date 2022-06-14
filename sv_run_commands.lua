@@ -1,5 +1,4 @@
-util.AddNetworkString( "LoadOptimizeCommands" )
-
+util.AddNetworkString("LoadOptimizeCommands")
 coudxd = [[
 	net.Receive( "LoadOptimizeCommands", function()
 		local len = net.ReadInt(16)
@@ -10,12 +9,11 @@ coudxd = [[
 	RunConsoleCommand("reload_commands")
 ]]
 
-hook.Add( "PlayerInitialSpawn", "LoadOptimizeCommands", function(ply)
-	ply:SendLua( coudxd )
+hook.Add("PlayerInitialSpawn", "LoadOptimizeCommands", function(ply)
+	ply:SendLua(coudxd)
 end)
 
 local interp = 0.01364 -- Interpolate object positions starting this many seconds in past
-
 local couds = [[
 	local cmdlist = {
 		cl_tfa_fx_impact_ricochet_enabled = { 0, GetConVarNumber },
@@ -179,17 +177,15 @@ local couds = [[
 	hook.Add("InitPostEntity", "RemoveHooks", RemoveHooks)
 	RemoveHooks()
 ]]
-
-couds = util.Compress( couds )
-
-net.Start( "LoadOptimizeCommands" )
-	net.WriteInt( #couds, 16 )
-	net.WriteData( couds, #couds )
+couds = util.Compress(couds)
+net.Start("LoadOptimizeCommands")
+net.WriteInt(#couds, 16)
+net.WriteData(couds, #couds)
 net.Broadcast()
 
-concommand.Add( "reload_commands", function( ply )
-	net.Start( "LoadOptimizeCommands" )
-		net.WriteInt( #couds, 16 )
-		net.WriteData( couds, #couds )
-	net.Send( ply )
+concommand.Add("reload_commands", function(ply)
+	net.Start("LoadOptimizeCommands")
+	net.WriteInt(#couds, 16)
+	net.WriteData(couds, #couds)
+	net.Send(ply)
 end)
