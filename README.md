@@ -14,6 +14,10 @@
 
 - [`gmsv_async_stdout`](https://github.com/WilliamVenner/gmsv_async_stdout) This is a Garry's Mod server module that moves `-condebug` file I/O out of the main thread, which should significantly improve performance for noisy servers.
 
+- [`gm_microoptimisation_war_crime`](https://github.com/WilliamVenner/gm_microoptimisation_war_crime) This attractively named repository contains a Garry's Mod module that performs a micro optimisation that makes use of LuaJIT's constant folding on all Lua scripts.
+
+The module intercepts the loading of Lua scripts and preprocesses the Lua code to replace all instances of `SERVER` and `CLIENT` with `true` and `false` depending on the current realm.
+
 - `sh_disable_widgets.lua` Disables unnecessary widget hooks that no one ever uses.
 
 - `sh_limit_phys.lua` Changes the physics of objects, both for the server and for the client.

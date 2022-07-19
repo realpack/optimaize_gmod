@@ -13,3 +13,6 @@
 [submodule "gmsv_async_stdout"]
 	path = gmsv_async_stdout
 	url = https://github.com/WilliamVenner/gmsv_async_stdout
+[submodule "gm_microoptimisation_war_crime"]
+	path = gm_microoptimisation_war_crime
+	url = https://github.com/WilliamVenner/gm_microoptimisation_war_crime
