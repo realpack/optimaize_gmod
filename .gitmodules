@@ -10,3 +10,6 @@
 [submodule "gmod-lua-performance"]
 	path = gmod-lua-performance
 	url = https://github.com/OverlordAkise/gmod-lua-performance
+[submodule "gmsv_async_stdout"]
+	path = gmsv_async_stdout
+	url = https://github.com/WilliamVenner/gmsv_async_stdout
