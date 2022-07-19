@@ -16,7 +16,7 @@
 
 - [`gm_microoptimisation_war_crime`](https://github.com/WilliamVenner/gm_microoptimisation_war_crime) This attractively named repository contains a Garry's Mod module that performs a micro optimisation that makes use of LuaJIT's constant folding on all Lua scripts.
 
-The module intercepts the loading of Lua scripts and preprocesses the Lua code to replace all instances of `SERVER` and `CLIENT` with `true` and `false` depending on the current realm.
+  - The module intercepts the loading of Lua scripts and preprocesses the Lua code to replace all instances of `SERVER` and `CLIENT` with `true` and `false` depending on the current realm.
 
 - `sh_disable_widgets.lua` Disables unnecessary widget hooks that no one ever uses.
 
