@@ -73,7 +73,7 @@ local couds = [[
 		mat_envmapsize = { 0, GetConVarNumber },
 		mat_envmaptgasize = { 0, GetConVarNumber },
 		mat_hdr_level = { 0, GetConVarNumber },
-		mat_max_worldmesh_vertices = { 512, GetConVarNumber2}, )
+		mat_max_worldmesh_vertices = { 512, GetConVarNumber2 },
 		mat_motion_blur_enabled = { 0, GetConVarNumber },
 		mat_parallaxmap = { 0, GetConVarNumber },
 		mat_picmip = { 2, GetConVarNumber },
@@ -169,7 +169,9 @@ local couds = [[
 	local function RemoveHooks()
 		for hook, hooks in pairs(badhooks) do
 			for _, name in ipairs(hooks) do
-				hook.Remove(hook, name)
+				if isfunction(hook.Remove) then
+					hook.Remove(hook, name)
+				end
 			end
 		end
 	end
