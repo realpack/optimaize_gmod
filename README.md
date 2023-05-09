@@ -1,3 +1,7 @@
+- [`gmod_random_patches`](https://github.com/Pika-Software/gmod_random_patches) A kit of in-game fixes not affecting gameplay but making the game more productive and fixing some bugs.
+
+  <sup>Most of the patches are already in the repository, but I thought it would be worth adding this as well.</sup> 
+
 - `cl_limit_render.lua`
   - Disables the HDR player hardware. (High Dynamic Range)
   - Disables Pixel Shaders 2.0/1.4 and Vertex Shaders 2.0

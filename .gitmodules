@@ -16,3 +16,6 @@
 [submodule "gm_microoptimisation_war_crime"]
 	path = gm_microoptimisation_war_crime
 	url = https://github.com/WilliamVenner/gm_microoptimisation_war_crime
+[submodule "gmod_random_patches"]
+	path = gmod_random_patches
+	url = https://github.com/Pika-Software/gmod_random_patches
