@@ -19,3 +19,6 @@
 [submodule "gmod_random_patches"]
 	path = gmod_random_patches
 	url = https://github.com/Pika-Software/gmod_random_patches
+[submodule "gm_addon_optimization_tricks"]
+	path = gm_addon_optimization_tricks
+	url = https://github.com/CFC-Servers/gm_addon_optimization_tricks

@@ -1,3 +1,5 @@
+- [`gm_addon_optimization_tricks`](https://github.com/CFC-Servers/gm_addon_optimization_tricks) Tips & Tricks to make your addon slim and fast
+
 - [`gmod_random_patches`](https://github.com/Pika-Software/gmod_random_patches) A kit of in-game fixes not affecting gameplay but making the game more productive and fixing some bugs.
 
   <sup>Most of the patches are already in the repository, but I thought it would be worth adding this as well.</sup> 
